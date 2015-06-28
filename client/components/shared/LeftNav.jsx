@@ -34,7 +34,7 @@ UiLeftNav = React.createClass({
     return {
       menuItems: [
         { route: 'sign-in', text: 'Sign in' },
-        { route: 'marketplace', text: 'Marketplace' },
+        { route: 'marketplace/landing', text: 'Marketplace' },
         // {
         //    text: 'Disabled',
         //    disabled: true

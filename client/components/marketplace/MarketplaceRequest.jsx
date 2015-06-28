@@ -1,4 +1,11 @@
+var {
+  TextField,
+  DatePicker
+} = mui;
 
+/**
+ * Service request container component
+ */
 UiMarketplaceRequest = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -13,7 +20,12 @@ UiMarketplaceRequest = React.createClass({
   render: function() {
     return (
       <div>
-        <h6>Request</h6>
+          <TextField
+            hintText="Make a request here"
+            floatingLabelText="Request overview" />
+            <DatePicker
+              hintText="Have a date range?"
+              showYearSelector={false} />
         {this.props.children}
       </div>
     );

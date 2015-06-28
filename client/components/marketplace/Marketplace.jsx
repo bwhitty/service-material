@@ -1,4 +1,3 @@
-
 UiMarketplace = React.createClass({
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -13,7 +12,6 @@ UiMarketplace = React.createClass({
   render: function() {
     return (
       <div>
-        <h3>Marketplace</h3>
         {this.props.children}
       </div>
     );

@@ -20,6 +20,9 @@ if (Meteor.isClient) {
       s.parentNode.insertBefore(wf, s);
     })();
 
+    // Uhhh, needed so react dev tools work?
+    window.React = React;
+
     injectTapEventPlugin();
 
     $(document.body).html("<div id='container'></div>");
@@ -35,13 +38,11 @@ if (Meteor.isClient) {
         <Route path="/" component={UiApp}>
           <Route path="sign-in" component={UiSignIn} />
           <Route path="marketplace" component={UiMarketplace}>
-            <Route path="/" component={UiMarketplaceLanding} />
+            <Route path="landing" component={UiMarketplaceLanding} />
             <Route path="request" component={UiMarketplaceRequest}>
-
             </Route>
-            <Route path="search" component={UiMarketplaceSearch}>
-
-            </Route>
+            <Route path="search" component={UiMarketplaceSearch} />
+            <Route path="search/results" component={UiMarketplaceSearchResults} />
           </Route>
         </Route>
       </Router>
