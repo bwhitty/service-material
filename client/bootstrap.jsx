@@ -24,7 +24,7 @@ if (Meteor.isClient) {
 
     $(document.body).html("<div id='container'></div>");
 
-    // TODO FIXME these routes need to move to client/routes.jsx
+    // FIXME these routes need to move to client/routes.jsx
     var {
       Router,
       Route

@@ -23,7 +23,7 @@ UiApp = React.createClass({
       <div>
         <AppBar onLeftIconButtonTouchTap={() => { this.refs.LeftNav.toggle() }} />
         <UiLeftNav ref="LeftNav" />
-        {this.props.children}
+        {this.props.children || <UiNotFound />}
         <UiAppFooter />
       </div>
     );

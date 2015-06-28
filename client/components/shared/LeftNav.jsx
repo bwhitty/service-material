@@ -5,12 +5,20 @@ var {
   LeftNav
 } = mui;
 
+var {
+  Navigation,
+  State
+} = ReactRouter;
+
 /**
  * Application left menu component.
  * @method toggle Toggles the navigation bar on and off.
  */
 UiLeftNav = React.createClass({
-  // mixins: [ReactMeteorData],
+  mixins: [
+    Navigation,
+    State
+  ],
 
   childContextTypes: {
     muiTheme: React.PropTypes.object
@@ -22,25 +30,11 @@ UiLeftNav = React.createClass({
     };
   },
 
-  /**
-   * Detect authorization state here??
-   * TODO should this be up in App and then passed down via props? Probably.
-   * @return {[type]} [description]
-   */
-  // getMeteorData() {
-  // },
-
   getInitialState() {
     return {
       menuItems: [
         { route: 'sign-in', text: 'Sign in' },
         { route: 'marketplace', text: 'Marketplace' },
-        { route: 'components', text: 'Components' },
-        {
-           type: MenuItem.Types.LINK,
-           payload: 'sign-in',
-           text: 'Sign in'
-        },
         // {
         //    text: 'Disabled',
         //    disabled: true
@@ -61,7 +55,8 @@ UiLeftNav = React.createClass({
         ref="LeftNav"
         docked={false}
         menuItems={this.state.menuItems}
-        onChange={(e, key, payload) => { this._handleTransition }}
+        onChange={(e, key, payload) => this.transitionTo(payload.route)}
+        selectedIndex={this._getSelectedIndex()}
       />
     );
   },
@@ -74,15 +69,12 @@ UiLeftNav = React.createClass({
     this.refs.LeftNav.toggle();
   },
 
-  /**
-   * Handles routing from taps on menu items.
-   * @param  {Event} e
-   * @param  {String} key
-   * @param  {mixed} payload
-   * @return {void}
-   */
-  _handleTransition(e, key, payload) {
-    // FIXME this doesn't work
-    this.context.router.transitionTo(payload.route);
+  _getSelectedIndex() {
+    let currentItem;
+
+    for (let i = this.state.menuItems.length - 1; i >= 0; i--) {
+      currentItem = this.state.menuItems[i];
+      if (currentItem.route && this.isActive(currentItem.route)) return i;
+    }
   }
 });
