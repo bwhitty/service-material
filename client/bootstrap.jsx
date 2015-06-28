@@ -1,40 +1,16 @@
-var ThemeManager = new mui.Styles.ThemeManager();
+// Fire dis bish up
 
-var {
-  AppBar,
-  DatePicker,
-  TextField
-} = mui;
+// Import MUI theme manager and make it global so we can reuse it errwhere
+ThemeManager = new mui.Styles.ThemeManager();
 
 React.initializeTouchEvents(true);
 
-var App = React.createClass({
-  childContextTypes: {
-    muiTheme: React.PropTypes.object
-  },
-
-  getChildContext: function() {
-    return {
-      muiTheme: ThemeManager.getCurrentTheme()
-    };
-  },
-
-  render: function() {
-    return (
-      <div>
-        <DatePicker hintText="Landscape Dialog" mode="landscape"/>
-        <TextField hintText="Hint Text" />
-      </div>
-    );
-  }
-});
-
 if (Meteor.isClient) {
-  Meteor.startup(function () {
+  Meteor.startup(() => {
     var WebFontConfig = {
       google: { families: [ 'Roboto:400,300,500:latin' ] }
     };
-    (function() {
+    (() => {
       var wf = document.createElement('script');
       wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
       '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
@@ -47,6 +23,19 @@ if (Meteor.isClient) {
     injectTapEventPlugin();
 
     $(document.body).html("<div id='container'></div>");
-    React.render(<App />, document.getElementById("container"));
+
+    // TODO FIXME these routes need to move to client/routes.jsx
+    var {
+      Router,
+      Route
+    } = ReactRouter;
+
+    React.render((
+      <Router history={new HashHistory()}>
+        <Route path="/" component={UiApp}>
+          <Route path="sign-in" component={UiSignIn}></Route>
+        </Route>
+      </Router>
+    ), document.getElementById("container"));
   });
 }
