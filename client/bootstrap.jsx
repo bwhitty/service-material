@@ -34,7 +34,7 @@ if (Meteor.isClient) {
     } = ReactRouter;
 
     React.render((
-      <Router history={new HashHistory()}>
+      <Router history={HashHistory}>
         <Route path="/" component={UiApp}>
           <Route path="home" component={UiHome} />
           <Route path="sign-in" component={UiSignIn} />

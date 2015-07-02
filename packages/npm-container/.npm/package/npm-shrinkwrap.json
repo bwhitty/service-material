@@ -187,7 +187,7 @@
       }
     },
     "react-router": {
-      "version": "1.0.0-beta2",
+      "version": "1.0.0-beta3",
       "dependencies": {
         "invariant": {
           "version": "2.1.0",
