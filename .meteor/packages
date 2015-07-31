@@ -25,3 +25,4 @@ reload
 autoupdate
 fortawesome:fontawesome
 accounts-password
+reactrouter:react-router

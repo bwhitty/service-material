@@ -27,26 +27,24 @@ if (Meteor.isClient) {
 
     $(document.body).html("<div id='container'></div>");
 
-    // FIXME these routes need to move to client/routes.jsx
-    var {
-      Router,
-      Route
-    } = ReactRouter;
+    const { Router, Route } = ReactRouter;
+    const { history } = ReactRouter.lib.HashHistory;
 
+    // TODO: these routes need to move to routes.jsx
     React.render((
-      <Router history={HashHistory}>
+      <Router history={history}>
         <Route path="/" component={UiApp}>
-          <Route path="home" component={UiHome} />
-          <Route path="sign-in" component={UiSignIn} />
-          <Route path="sign-up" component={UiSignUp} />
+          <Route path="home" component={UiHome}/>
+          <Route path="sign-in" component={UiSignIn}/>
+          <Route path="sign-up" component={UiSignUp}/>
           <Route path="marketplace" component={UiMarketplace}>
-            <Route path="landing" component={UiMarketplaceLanding} />
+            <Route path="landing" component={UiMarketplaceLanding}/>
             <Route path="request" component={UiMarketplaceRequest}>
             </Route>
-            <Route path="search" component={UiMarketplaceSearch} />
-            <Route path="search/results" component={UiMarketplaceSearchResults} />
+            <Route path="search" component={UiMarketplaceSearch}/>
+            <Route path="search/results" component={UiMarketplaceSearchResults}/>
           </Route>
-          <Route path="dashboard" component={UiDashboard} />
+          <Route path="dashboard" component={UiDashboard}/>
         </Route>
       </Router>
     ), document.getElementById("container"));
