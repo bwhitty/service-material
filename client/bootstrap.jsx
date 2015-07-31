@@ -1,6 +1,6 @@
-// Fire dis bish up
+// Fire it up
 
-// Import MUI theme manager and make it global so we can reuse it errwhere
+// Import MUI theme manager and make it global so we can reuse it everywhere
 ThemeManager = new mui.Styles.ThemeManager();
 
 React.initializeTouchEvents(true);
@@ -20,7 +20,7 @@ if (Meteor.isClient) {
       s.parentNode.insertBefore(wf, s);
     })();
 
-    // Uhhh, needed so react dev tools work?
+    // Needed so react dev tools work?
     window.React = React;
 
     injectTapEventPlugin();
