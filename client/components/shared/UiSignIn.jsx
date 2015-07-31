@@ -48,9 +48,9 @@ UiSignIn = React.createClass({
 
   render() {
     // @see getMeteorData(), redirect away if already logged in
-    if (this.data.shouldRedirect) {
-        this.transitionTo('/dashboard');
-    }
+    //if (this.data.shouldRedirect) {
+    //    this.transitionTo('/dashboard');
+    //}
 
     let loggingInProgress = null;
     if (this.data.loggingIn) {
